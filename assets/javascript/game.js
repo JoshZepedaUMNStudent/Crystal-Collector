@@ -1,69 +1,90 @@
 $(document).ready(function() {
 
-var yourTotal = 0;
+var randomNum = Math.floor(Math.random() * 102 + 19);
+
+$("#targetNum").text(randomNum);
+
+var num1 = Math.floor(Math.random() * 12 + 1);
+var num2 = Math.floor(Math.random() * 12 + 1);
+var num3 = Math.floor(Math.random() * 12 + 1);
+var num4 = Math.floor(Math.random() * 12 + 1);
+
+var playerTotal = 0;
 var wins = 0;
-var losses = 0;    
+var losses = 0;
 
-var targetNumber = Math.floor(Math.random() * 101 + 19);
-console.log(targetNumber);
-
-var number1= Math.floor(Math.random() * 11 + 1);
-var number2= Math.floor(Math.random() * 11 + 1);
-var number3= Math.floor(Math.random() * 11 + 1);
-var number4= Math.floor(Math.random() * 11 + 1);
-
-$("#number").text(targetNumber);
-$("#numberWins").text(wins);
-$("#numberLosses").text(losses);
-
+$("#numWins").text("Wins: " + wins);
+$("#numLosses").text("Losses: " + losses);
 
 function reset() {
-    targetNumber = Math.floor(Math.random() * 101 + 19);
-    console.log(targetNumber);
-    $("#number-card").text(targetNumber);
-    number1 = Math.floor(Math.random() * 11 + 1);
-    number2 = Math.floor(Math.random() * 11 + 1);
-    number3 = Math.floor(Math.random() * 11 + 1);
-    number4 = Math.floor(Math.random() * 11 + 1);
-    yourTotal = 0;
+    randomNum = Math.floor(Math.random() * 102 + 19);
+    console.log(randomNum);
+    $("#targetNum").text(randomNum);
+    num1 = Math.floor(Math.random() * 12 + 1);
+    num2 = Math.floor(Math.random() * 12 + 1);
+    num3 = Math.floor(Math.random() * 12 + 1);
+    num4 = Math.floor(Math.random() * 12 + 1);
+    playerTotal = 0;
+    $("#score").text(playerTotal);
 }
 
-function You_Win() {
-    alert("You Win!");
-        wins++;
-        $("#numberWins").text(wins);
-        reset();
+function Winner() {
+    alert("You Won!");
+    wins++;
+    $("#numWins").text("Wins: " + wins);
+    reset();
 }
 
-function Oh_Well() {
-    alert("Oh Well");
-        losses++;
-        $("numberLosses").text(losses);
-        reset()
+function Loser() {
+    alert ("You Lose!");
+    losses++;
+    $("#numLosses").text("Losses: " + losses);
+    reset();
 }
 
-$("#gem1").click(function() {
-    yourTotal = yourTotal + number1;
-    $("score").text(yourTotal);
-        if (yourTotal == targetNumber) {
-            You_Win();
-        }
-        else if (yourTotal > targetRandom) {
-            Oh_Well();
-        }
-}
+$("#gem1").on("click", function() {
+    playerTotal = playerTotal + num1;
+    console.log(playerTotal);
+    $("#score").text(playerTotal);
+    if (playerTotal === randomNum) {
+        Winner()
+    } else if (playerTotal > randomNum) {
+        Loser()
+    }
+});
 
+$("#gem2").on("click", function() {
+    playerTotal = playerTotal + num2;
+    console.log(playerTotal);
+    $("#score").text(playerTotal);
+    if (playerTotal === randomNum) {
+        Winner()
+    } else if (playerTotal > randomNum) {
+        Loser()
+    }
+});
 
+$("#gem3").on("click", function() {
+    playerTotal = playerTotal + num3;
+    console.log(playerTotal);
+    $("#score").text(playerTotal);
+    if (playerTotal === randomNum) {
+        Winner()
+    } else if (playerTotal > randomNum) {
+        Loser()
+    }
+});
 
-
-
-
-
-
-
-
-
-
+$("#gem4").on("click", function() {
+    playerTotal = playerTotal + num4;
+    console.log(playerTotal);
+    $("#score").text(playerTotal);
+    if (playerTotal === randomNum) {
+        Winner()
+    } else if (playerTotal > randomNum) {
+        Loser()
+    }
+});
 
 
 });
